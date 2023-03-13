@@ -20,7 +20,7 @@ public class SkillController {
     private SkillRepository skillRepository;
 
     @GetMapping("")
-    public String displayAllSkills(Model model) {
+    public String index(Model model) {
         model.addAttribute("skills", skillRepository.findAll());
         return "skills/index";
     }
@@ -32,10 +32,8 @@ public class SkillController {
     }
 
     @PostMapping("add")
-    public String processAddSkillsForm(@ModelAttribute @Valid Skill newSkill, Errors errors, Model model) {
+    public String processAddSkillForm(@ModelAttribute @Valid Skill newSkill, Errors errors, Model model) {
         if (errors.hasErrors()) {
-            model.addAttribute(new Skill());
-            model.addAttribute("errors","Bad data provided!");
             return "skills/add";
         }
         skillRepository.save(newSkill);

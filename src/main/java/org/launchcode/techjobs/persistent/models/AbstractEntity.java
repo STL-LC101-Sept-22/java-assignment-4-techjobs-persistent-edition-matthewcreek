@@ -18,6 +18,7 @@ public abstract class AbstractEntity {
     @Size(min = 3, max = 255, message = "Name must be at least 3 characters.")
     private String name;
 
+
     public int getId() {
         return id;
     }
